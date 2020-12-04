@@ -1,0 +1,17 @@
+.inputStyle{
+	width:  40em;
+	margin: 0 0 1em 0;
+}
+
+.inputDate{
+	display: flex;
+	justify-content: center;
+}
+
+#events_date_date, #events_date_time{
+	margin: 0 2em  0 2em;
+}
+
+.show{
+	width:  40em;
+}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Events Index{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <h1 class="d-flex justify-content-center my-4">Events index</h1>
+
+        <a href="{{ path('events_new') }}" class="btn btn-primary mt-1">Create new</a>
+
+        <div class="row d-flex justify-content-center">
+            {% for event in events %}
+                <div class="col-lg-4 col-md-6 col-12 p-3">
+                    <div class="card h-100">
+                        <img class="card-img-top" src={{ event.image }}>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event.name }}</h5>
+                            <p class="card-text">{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+                            <p class="card-text">{{ event.description }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{{ path('events_show', {'eventid': event.eventID}) }}" class="btn btn-info">Show</a>
+                            <a href="{{ path('events_edit', {'eventid': event.eventID}) }}" class="btn btn-secondary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+
+            {% else %}
+                <div>No records found<div>
+            {% endfor %}
+        </div>
+
+        
+    </div>
+{% endblock %}

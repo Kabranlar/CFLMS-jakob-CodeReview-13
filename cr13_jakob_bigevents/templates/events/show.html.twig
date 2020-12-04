@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Events{% endblock %}
+
+{% block body %}
+    <h1 class="d-flex justify-content-center my-4">{{ event.name }}</h1>
+
+    <div class="d-flex justify-content-center my-4 mx-auto show">
+        <div class="p-3 text-center">
+            <div class="card">
+                <img class="card-img-top" src={{ event.image }}>
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.name }}</h5>
+                    <p class="card-text">{{ event.type }}</p>
+                    <p class="card-text">{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+                </div>
+                <hr>
+                <div class="card-body">
+                    <p class="card-text">{{ event.description }}</p>
+                    <p class="card-text">Capacity: {{ event.capacity }}</p>
+                </div>
+                <hr>
+                <div class="card-body">
+                    <h5 class="card-title">Contact Info</h5>
+                    <p class="card-text">Address: {{ event.address }}</p>
+                    <p class="card-text">Phone: {{ event.phone }}</p>
+                    <a href="{{event.url}}">URL: {{ event.url }}</a>
+                    <a href="{{event.url}}">URL: {{ event.url }}</a>
+                    <br>
+                    <a href="{{event.email}}">E-Mail: {{ event.email }}</a>
+                </div>
+                <div class="card-footer text-muted d-flex justify-content-center">
+                    <a href="{{ path('events_edit', {'eventid': event.eventid}) }}" class="btn btn-secondary">edit</a>
+
+                    {{ include('events/_delete_form.html.twig') }}
+
+                    <a href="{{ path('events_index') }}" class='btn btn-info'>back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# <div class="d-flex justify-content-center">
+        
+        <a href="{{ path('events_edit', {'eventid': event.eventid}) }}" class="btn btn-secondary">edit</a>
+
+        {{ include('events/_delete_form.html.twig') }}
+
+        <a href="{{ path('events_index') }}" class='btn btn-info'>back to list</a>
+    </div> #}
+    <br>
+{% endblock %}
